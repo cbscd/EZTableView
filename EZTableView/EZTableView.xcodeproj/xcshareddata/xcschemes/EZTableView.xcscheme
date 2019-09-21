@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Versioning"
-               scriptText = "exec &gt; ${PROJECT_DIR}/Versioning-prebuild.log 2&gt;&amp;1&#10;echo &quot;Versioning script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/update-version.sh --plist=EZTableView/Info.plist --reflect-commits&#10;echo &quot;Versioning scrit done&quot;&#10;">
+               scriptText = "exec &gt; ${PROJECT_DIR}/Versioning-prebuild.log 2&gt;&amp;1&#10;echo &quot;Versioning script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/update-version.sh --plist=${INFOPLIST_FILE} --reflect-commits&#10;echo &quot;Versioning scrit done&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
@@ -28,7 +28,16 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Post build script"
-               scriptText = "exec &gt; ${PROJECT_DIR}/Postbuild.log 2&gt;&amp;1&#10;echo &quot;Postbuild script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/postbuild.sh&#10;echo &quot;Postbuild script done&quot;&#10;">
+               scriptText = "exec &gt; ${PROJECT_DIR}/Versioning-postbuild.log 2&gt;&amp;1&#10;echo &quot;Post build dir ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/postbuild.sh&#10;echo &quot;Postbuild script done&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "200D337923362FB500CA1550"
+                     BuildableName = "EZTableView.framework"
+                     BlueprintName = "EZTableView"
+                     ReferencedContainer = "container:EZTableView.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
             </ActionContent>
          </ExecutionAction>
       </PostActions>

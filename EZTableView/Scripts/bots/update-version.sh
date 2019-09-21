@@ -217,12 +217,18 @@ if [[ -z ${enable_for_branch} ]] || [[ ",${enable_for_branch}," == *",${branchNa
         echo "Source Folder: ${SRCROOT}"
 
 		lastTagCommit=$("${git}" rev-list --tags --no-walk --max-count=1)
-        echo "Last tag commit: ${lastTagCommit}"
-        buildNumberVersion=$("${git}" rev-list ${lastTagCommit}..HEAD --count)
+  
+  		if [[ ! -z ${lastTagCommit} ]]; then
+            echo "Last tag commit: ${lastTagCommit}"
+            buildNumberVersion=$("${git}" rev-list ${lastTagCommit}..HEAD --count)
+        else
+            buildNumberVersion=$("${git}" rev-list --count HEAD)
+        fi
+        
         echo "Commits since last commit: ${buildNumberVersion}"
 
         if [[ ${branchName} != "master" ]] && [[ ${branchName} != "develop" ]] && ( [[ ! ${ignore_jira_ticket} ]])  ; then
-            regex="(LA-[0-9]+)"
+            regex="(EZT-[0-9]+)"
             if [[ $branchName =~ $regex ]]; then
                 # Get the captured portion of the branch name.
                 jiraTicketName="${BASH_REMATCH[1]}"

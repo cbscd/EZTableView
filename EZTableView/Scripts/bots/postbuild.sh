@@ -6,4 +6,4 @@ if [ ! -d "${BASEFOLDER}" ]; then
 fi
 
 # Resets the build version number to 0. DO NOT CHANGE THIS.
-./Scripts/bots/update-version.sh --build=0 -i
+./Scripts/bots/update-version.sh --plist=${INFOPLIST_FILE} --build=0 -i
