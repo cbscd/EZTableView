@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>document</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/**
+     &lt;#Brief Introduction#&gt;.
+     
+     - Parameter &lt;#name#&gt;: &lt;#description#&gt;.
+     
+     - Throws: `&lt;#Error type#&gt;`
+     &lt;#Condition for the throw#&gt;
+     
+     - Returns: &lt;#what?#&gt;.
+     */</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>43BD4D3A-034C-4BEA-8495-4BC82B019423</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Template to document a method with one parameter</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift documentation (one parameter)</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

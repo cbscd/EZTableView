@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#
+# Pre-commit hooks
+
+# Revert build number
+SRCROOT=`git rev-parse --show-toplevel`
+cd "${SRCROOT}"
+./EZTableView/Scripts/bots/update-version.sh --build=0 -i
+
+# Check branch name
+BRANCH_NAME_LENGTH=`git rev-parse --abbrev-ref HEAD | grep -o -E '^(feature|bug|hotfix|release)\/(EZT-[0-9]+)_([A-Za-z_]+)$|^(merge)\/(.*)$' | wc -c`
+
+VALID_BRANCH_PATHS="feature|bug|hotfix|release|merge"
+
+if [ ${BRANCH_NAME_LENGTH} -eq 0 ] ; then
+  echo "ERROR in pre-commit hook: vim .git/hooks/pre-commit"
+  echo "Git Command: '${BRANCH_NAME_LENGTH}'"
+  echo "Branch name should be like (${VALID_BRANCH_PATHS})/EZT-1234_branch_name"
+  echo "(No hyphens in after the ticket id)"
+  exit 1
+fi
+
