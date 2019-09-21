@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1100"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Versioning"
+               scriptText = "exec &gt; ${PROJECT_DIR}/Versioning-prebuild.log 2&gt;&amp;1&#10;echo &quot;Versioning script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/update-version.sh --plist=EZTableView/Info.plist --reflect-commits&#10;echo &quot;Versioning scrit done&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "200D337923362FB500CA1550"
+                     BuildableName = "EZTableView.framework"
+                     BlueprintName = "EZTableView"
+                     ReferencedContainer = "container:EZTableView.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Post build script"
+               scriptText = "exec &gt; ${PROJECT_DIR}/Postbuild.log 2&gt;&amp;1&#10;echo &quot;Postbuild script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/postbuild.sh&#10;echo &quot;Postbuild script done&quot;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "200D337923362FB500CA1550"
+               BuildableName = "EZTableView.framework"
+               BlueprintName = "EZTableView"
+               ReferencedContainer = "container:EZTableView.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "200D338223362FB500CA1550"
+               BuildableName = "EZTableViewTests.xctest"
+               BlueprintName = "EZTableViewTests"
+               ReferencedContainer = "container:EZTableView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "200D337923362FB500CA1550"
+            BuildableName = "EZTableView.framework"
+            BlueprintName = "EZTableView"
+            ReferencedContainer = "container:EZTableView.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Strip frameworks"
+               scriptText = "LOGFILE=${PROJECT_DIR}/Archive-StripFrameworks.log&#10;&#10;exec &gt; ${LOGFILE} 2&gt;&amp;1&#10;&#10;echo &quot;Strip frameworks ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/stripFrameworks.sh&#10;&#10;echo &quot;Strip frameworks done&quot;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Print Archive-StripFrameworks.log"
+               scriptText = "LOGFILE=${PROJECT_DIR}/Archive-StripFrameworks.log&#10;cat ${LOGFILE}&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+   </ArchiveAction>
+</Scheme>
