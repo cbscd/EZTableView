@@ -23,6 +23,15 @@
             </ActionContent>
          </ExecutionAction>
       </PreActions>
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Post build script"
+               scriptText = "exec &gt; ${PROJECT_DIR}/Postbuild.log 2&gt;&amp;1&#10;echo &quot;Postbuild script ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/postbuild.sh&#10;echo &quot;Postbuild script done&quot;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -91,5 +100,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Strip frameworks"
+               scriptText = "LOGFILE=${PROJECT_DIR}/Archive-StripFrameworks.log&#10;&#10;exec &gt; ${LOGFILE} 2&gt;&amp;1&#10;&#10;echo &quot;Strip frameworks ${PROJECT_DIR}&quot;&#10;cd ${PROJECT_DIR}&#10;${PROJECT_DIR}/Scripts/bots/stripFrameworks.sh&#10;&#10;echo &quot;Strip frameworks done&quot;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Print Archive-StripFrameworks.log"
+               scriptText = "LOGFILE=${PROJECT_DIR}/Archive-StripFrameworks.log&#10;cat ${LOGFILE}&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>
